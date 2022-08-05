@@ -1,76 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> 2md: A Converter for Copy/Paste content to Markdown</title>
-    <link rel="stylesheet" href="styles.css">
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>2md: A Converter for Copy/Paste content to Markdown</title>
+    <link rel="stylesheet" href="styles.css" />
     <script src="tinymce/tinymce.min.js"></script>
     <script src="js/clipboard.min.js"></script>
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/to-markdown.js"></script>
-</head>
-<body>
-
-<div class="row cf">
-    <div class="col">
+  </head>
+  <body>
+    <div class="row cf">
+      <div class="col">
         <div class="header">
-            <h2><a href="https://github.com/phodal/2md">2MD</a></h2>
+          <h2><a href="https://github.com/phodal/2md">2MD</a></h2>
         </div>
         <textarea id="input"></textarea>
-    </div>
-    <div class="col">
+      </div>
+      <div class="col">
         <div class="header">
-            <button class="btn button" data-clipboard-action="copy" data-clipboard-target="#output">复制</button>
+          <button
+            class="btn button"
+            data-clipboard-action="copy"
+            data-clipboard-target="#output"
+          >
+            复制
+          </button>
         </div>
         <textarea id="output" rows="25" cols="50"> hello, world</textarea>
+      </div>
     </div>
-</div>
-</body>
-
-<script>
-  tinymce.init({
-    selector: 'textarea#input',
-    height: 500,
-    menubar: false,
-    statusbar: false,
-    toolbar: ['code'],
-    plugins: [
-      'advlist autolink lists link image charmap print preview anchor',
-      'searchreplace visualblocks code fullscreen',
-      'insertdatetime media table contextmenu paste code'
-    ],
-    setup: function (editor) {
-      editor.on('change', function (e) {
-        var content = tinymce.get('input').getContent();
-        var md = toMarkdown(content, {
-          gfm: true,
-          converters: [{
-            filter: ['pre', 'figure', 'figure', 'figcaption', 'form', 'span', 'header', 'button', 'nav', 'section', 'iframe', 'footer', 'header', 'input', 'aside', 'article', 'time', 'label', 'dd', 'dl'],
-            replacement: function (content) {
-              return content
-            }
-          }, {
-            filter: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div'],
-
-            replacement: function(innerHTML, node) {
-              var hLevel = node.tagName.charAt(1);
-              var hPrefix = '';
-              for(var i = 0; i < hLevel; i++) {
-                hPrefix += '#';
-              }
-              return '\n' + hPrefix + ' ' + innerHTML + '\n\n';
-            }
-          }]
+  </body>
+  <script>
+    tinymce.init({
+      selector: "textarea#input",
+      height: 500,
+      menubar: false,
+      statusbar: false,
+      toolbar: ["code"],
+      plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste code",
+      ],
+      setup: function (editor) {
+        editor.on("change", function (e) {
+          var content = tinymce.get("input").getContent();
+          var md = toMarkdown(content, {
+            gfm: true,
+            converters: [
+              {
+                filter: [
+                  "pre",
+                  "figure",
+                  "figure",
+                  "figcaption",
+                  "form",
+                  "span",
+                  "header",
+                  "button",
+                  "nav",
+                  "section",
+                  "iframe",
+                  "footer",
+                  "header",
+                  "input",
+                  "aside",
+                  "article",
+                  "time",
+                  "label",
+                  "dd",
+                  "dl",
+                ],
+                replacement: function (content) {
+                  return content;
+                },
+              },
+              {
+                filter: ["h1", "h2", "h3", "h4", "h5", "h6", "div"],
+                replacement: function (innerHTML, node) {
+                  var hLevel = node.tagName.charAt(1);
+                  var hPrefix = "";
+                  for (var i = 0; i < hLevel; i++) {
+                    hPrefix += "#";
+                  }
+                  return "\n" + hPrefix + " " + innerHTML + "\n\n";
+                },
+              },
+            ],
+          });
+          $("#output").val(md);
         });
-        $("#output").val(md);
-      });
-    }
-  });
+      },
+    });
 
-  $('document').ready(function () {
-    new Clipboard('.btn');
-  });
-
-</script>
+    $("document").ready(function () {
+      new Clipboard(".btn");
+    });
+  </script>
 </html>

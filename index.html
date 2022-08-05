@@ -75,7 +75,11 @@
                   "dd",
                   "dl",
                 ],
-                replacement: function (content) {
+                replacement: function (content, node) {
+                  if (node.nodeName == "PRE") {
+                    var res = content.replace(/\n/g, "  \n");
+                    return res;
+                  }
                   return content;
                 },
               },

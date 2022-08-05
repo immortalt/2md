@@ -390,7 +390,6 @@
                 return "~~" + content + "~~";
               },
             },
-
             {
               filter: function (node) {
                 return (
@@ -401,14 +400,12 @@
                 return (node.checked ? "[x]" : "[ ]") + " ";
               },
             },
-
             {
               filter: ["th", "td"],
               replacement: function (content, node) {
                 return cell(content, node);
               },
             },
-
             {
               filter: "tr",
               replacement: function (content, node) {
@@ -428,21 +425,18 @@
                 return "\n" + content + (borderCells ? "\n" + borderCells : "");
               },
             },
-
             {
               filter: "table",
               replacement: function (content) {
                 return "\n\n" + content + "\n\n";
               },
             },
-
             {
               filter: ["thead", "tbody", "tfoot"],
               replacement: function (content) {
                 return content;
               },
             },
-
             // Fenced code blocks
             {
               filter: function (node) {
@@ -456,7 +450,6 @@
                 return "\n\n```\n" + node.firstChild.textContent + "\n```\n\n";
               },
             },
-
             // Syntax-highlighted code blocks
             {
               filter: function (node) {
@@ -474,7 +467,6 @@
                 );
               },
             },
-
             {
               filter: function (node) {
                 return (
@@ -620,23 +612,24 @@
             {
               filter: ["strong", "b"],
               replacement: function (content) {
-                return "**" + content + "**";
+                return "**`" + content.trim() + "`**";
               },
             },
 
             // Inline code
-            {
-              filter: function (node) {
-                var hasSiblings = node.previousSibling || node.nextSibling;
-                var isCodeBlock =
-                  node.parentNode.nodeName === "PRE" && !hasSiblings;
+            // Disable to fix leetcode question convert problem
+            // {
+            //   filter: function (node) {
+            //     var hasSiblings = node.previousSibling || node.nextSibling;
+            //     var isCodeBlock =
+            //       node.parentNode.nodeName === "PRE" && !hasSiblings;
 
-                return node.nodeName === "CODE" && !isCodeBlock;
-              },
-              replacement: function (content) {
-                return "`" + content + "`";
-              },
-            },
+            //     return node.nodeName === "CODE" && !isCodeBlock;
+            //   },
+            //   replacement: function (content) {
+            //     return "`" + content + "`";
+            //   },
+            // },
 
             {
               filter: function (node) {

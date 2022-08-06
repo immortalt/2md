@@ -1,4 +1,4 @@
-# 2md: A converter for copy/paste HTML content to Markdown
+# 2md: A converter for copy/paste content to Markdown
 ## Online version
 [https://immortal-blog.github.io/tomd](https://immortal-blog.github.io/tomd)
 ## Description

@@ -612,7 +612,10 @@
             {
               filter: ["strong", "b"],
               replacement: function (content) {
-                return "**" + content.trim() + "**";
+                var res = "**" + content + "**";
+                res = res.replace(" **", "** ");
+                res = res.replace(" **", "** ");
+                return res;
               },
             },
 

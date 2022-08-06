@@ -8,6 +8,7 @@ The original project had some problems converting the content of the leetcode pr
 ## Fixed problems of the original project
 - [x] Line breaks inside `<pre>` tags are ignored after conversion
 - [x] Superscripts and subscripts inside `` do not display properly after conversion
+- [x] Some special `<strong>` content cannot preview correctly in VSCode
 ## Screenshots
 ### Raw html
 ![image](https://user-images.githubusercontent.com/17811951/183224418-80c4b563-d177-46d7-aec7-53fb253dcdd6.png)

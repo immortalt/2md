@@ -612,24 +612,28 @@
             {
               filter: ["strong", "b"],
               replacement: function (content) {
-                return "**`" + content.trim() + "`**";
+                return "**" + content.trim() + "**";
               },
             },
 
             // Inline code
-            // Disable to fix leetcode question convert problem
-            // {
-            //   filter: function (node) {
-            //     var hasSiblings = node.previousSibling || node.nextSibling;
-            //     var isCodeBlock =
-            //       node.parentNode.nodeName === "PRE" && !hasSiblings;
-
-            //     return node.nodeName === "CODE" && !isCodeBlock;
-            //   },
-            //   replacement: function (content) {
-            //     return "`" + content + "`";
-            //   },
-            // },
+            {
+              filter: function (node) {
+                var hasSiblings = node.previousSibling || node.nextSibling;
+                var isCodeBlock =
+                  node.parentNode.nodeName === "PRE" && !hasSiblings;
+                return node.nodeName === "CODE" && !isCodeBlock;
+              },
+              replacement: function (content) {
+                if (
+                  (content.includes("<sup>") && content.includes("</sup>")) ||
+                  (content.includes("<sub>") && content.includes("</sub>"))
+                ) {
+                  return "<code>" + content + "</code>";
+                }
+                return "`" + content + "`";
+              },
+            },
 
             {
               filter: function (node) {

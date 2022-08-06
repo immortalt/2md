@@ -6,8 +6,7 @@ The original project had some problems converting the content of the leetcode pr
 ## Screenshots
 ### Raw html
 ![image](https://user-images.githubusercontent.com/17811951/183224418-80c4b563-d177-46d7-aec7-53fb253dcdd6.png)
-
 ### Convert to markdown
-![image](https://user-images.githubusercontent.com/17811951/183224376-99bbbc29-6227-4f96-8200-e57ba4b274a1.png)
+![image](https://user-images.githubusercontent.com/17811951/183227691-86caf431-178b-4d72-8f6b-02ff8199e1c1.png)
 ### Preview Markdown
-![image](https://user-images.githubusercontent.com/17811951/183224446-d303354e-6211-4e2a-b499-7f9ed205196d.png)
+![image](https://user-images.githubusercontent.com/17811951/183227712-d7a0325a-d39c-4cce-9472-1f06fe363d62.png)

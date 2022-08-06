@@ -3,6 +3,9 @@
 This is a special fork optimized for converting leetcode question content to markdown.  
 Based on https://github.com/phodal/2md.   
 The original project had some problems converting the content of the leetcode problem, and it stopped updating for many years, so I forked and fixed some problems.
+## Fixed problems of the original project
+- [x] Line breaks inside `<pre>` tags are ignored after conversion
+- [x] Superscripts and subscripts inside `` do not display properly after conversion
 ## Screenshots
 ### Raw html
 ![image](https://user-images.githubusercontent.com/17811951/183224418-80c4b563-d177-46d7-aec7-53fb253dcdd6.png)
